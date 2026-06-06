@@ -20,6 +20,41 @@ Inspired by [ai-website-cloner-template](https://github.com/JCodesMore/ai-websit
    /clone-website <target-url>
    ```
 
+## Running Modes
+
+Hermes Agent can drive this pipeline in two environments. The cloning logic is
+identical — what differs is **where the project lives** and **how you see the result**.
+
+### Local mode (Hermes CLI on your machine)
+
+The project is cloned to your disk. Inspect the result with a local dev server:
+
+```bash
+npm run dev      # → open http://localhost:3000 in your browser
+```
+
+Files are right there on your machine.
+
+### Remote mode (Telegram / Discord / any messaging gateway)
+
+When you talk to Hermes through a chat platform, the gateway runs on a **server**,
+not your phone or laptop. Everything happens server-side:
+
+- Browser tools (`browser_navigate`, `browser_console`) run **headless** on the server — inspection works fine
+- `delegate_task` builders run on the server
+- **You can't open `localhost:3000`** — the dev server isn't on your device
+
+So the deliverable comes back to you a different way. Pick one (the agent will offer):
+
+| Option | What you get |
+|--------|--------------|
+| **Push to GitHub** | Agent commits the clone to a repo — review the diff / pull it later |
+| **Deploy preview** | Agent deploys to Vercel (or your Dokploy/Docker host) and sends you a live URL you can open on your phone |
+| **Send archive** | Agent `tar`s the project and sends it as a file attachment |
+
+For mobile workflows, **deploy preview** is the smoothest — tap the link, see the
+clone live. See [Phase 6 in the skill](#) for the auto-deploy step.
+
 ## How It Works
 
 5-phase pipeline powered by Hermes Agent tools:
