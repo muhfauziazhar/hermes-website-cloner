@@ -32,7 +32,7 @@ Inspired by [ai-website-cloner-template](https://github.com/JCodesMore/ai-websit
 
 ## Tech Stack
 
-- Next.js 16 (App Router, React 19, TypeScript strict)
+- Next.js 15 (App Router, React 19, TypeScript strict) — upgradeable to 16
 - shadcn/ui (@base-ui/react primitives)
 - Tailwind CSS v4 (oklch design tokens)
 - Docker support (multi-stage production build)
@@ -66,7 +66,25 @@ docs/
   research/         # Inspection output + component specs
   design-references/ # Screenshots
 scripts/            # Asset download scripts
+    download-assets.mjs  # Batched downloader (manifest-driven)
 ```
+
+## Asset Downloader
+
+`scripts/download-assets.mjs` pulls images/videos discovered during reconnaissance:
+
+```bash
+# Pass the asset-discovery JSON captured via browser_console in Phase 1
+node scripts/download-assets.mjs docs/research/assets.json
+```
+
+Accepts the raw `{ images, videos, backgroundImages }` discovery output or a flat
+`[{ url, dest }]` list. Downloads run 4-at-a-time with retry; files land under `public/`.
+
+## Attribution
+
+Derived from [ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)
+by JCodesMore (MIT). Adapted for Hermes Agent's native browser + delegation tools.
 
 ## License
 

@@ -12,7 +12,7 @@ A reusable template for cloning websites using Hermes Agent's native tools:
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router, React 19, TypeScript strict)
+- **Framework:** Next.js 15 (App Router, React 19, TypeScript strict)
 - **UI:** shadcn/ui (@base-ui/react primitives, Tailwind CSS v4, `cn()` utility)
 - **Icons:** Lucide React (default — replaced by extracted SVGs during cloning)
 - **Styling:** Tailwind CSS v4 with oklch design tokens
